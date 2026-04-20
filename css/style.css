@@ -1186,3 +1186,48 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   backdrop-filter: blur(2px);
 }
 .drawer-overlay.open { display: block; }
+
+.cta-band {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 64px var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.cta-band__text {
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-weight: 200;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.cta-band__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cta-band__phone {
+  font-size: 26px;
+  font-weight: 200;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.cta-band__btn {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  padding: 12px 28px;
+  transition: border-color 0.25s;
+}
+.cta-band__btn:hover { border-color: var(--ink); }
