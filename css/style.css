@@ -166,7 +166,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 10px;
   padding: 16px 0 8px 0;
   border-top: 1px solid var(--border-lt);
-  margin-top: 4px;
+
 }
 
 .drawer-socials__link {
@@ -1152,7 +1152,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* ── Mobile font boosts ─────────────────────────── */
   body            { font-size: 19px; }
-  .nav__drawer .nav__link { font-size: 15px; padding: 18px 0 18px 18px; }
+  .nav__drawer .nav__link { font-size: 15px; padding: 10px 0 10px 10px; }
   .nav__drawer .nav__phone { font-size: 18px; padding: 16px; }
   .h-section      { font-size: clamp(28px, 7vw, 40px); }
   .h-display      { font-size: clamp(30px, 8vw, 44px); }
