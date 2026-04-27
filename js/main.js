@@ -5,14 +5,7 @@
 (function () {
   'use strict';
 
-  /* ── Nav scroll ───────────────────────────── */
-  var nav = document.querySelector('.nav');
-  if (nav) {
-    window.addEventListener('scroll', function () {
-      nav.style.borderBottomColor = window.scrollY > 30
-        ? 'rgba(0,0,0,0.1)' : '';
-    }, { passive: true });
-  }
+  /* ── Nav scroll (sidebar — no scroll border needed) ──── */
 
   /* ── Mobile burger ────────────────────────── */
   var burger  = document.querySelector('.nav__burger');
@@ -139,21 +132,44 @@
   var viewer  = document.getElementById('viewer');
   var vImg    = document.getElementById('viewer-img');
   var vClose  = document.getElementById('viewer-close');
+  var vLabel  = document.getElementById('viewer-label');
 
-  function openViewer(src) {
+  function openViewer(src, label) {
     if (!viewer) return;
     vImg.src = src;
+    if (vLabel) vLabel.textContent = label || '';
     viewer.classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
   function closeViewer() {
     if (!viewer) return;
     viewer.classList.remove('open');
     vImg.src = '';
+    document.body.style.overflow = '';
   }
 
   if (vClose) vClose.addEventListener('click', closeViewer);
   if (viewer) viewer.addEventListener('click', function (e) {
     if (e.target === viewer) closeViewer();
+  });
+
+  /* ── Before & After image lightbox ───────── */
+  document.querySelectorAll('.ba-half').forEach(function (half) {
+    half.addEventListener('click', function () {
+      var img = half.querySelector('img');
+      if (!img) return;
+      var pill = half.querySelector('.ba-pill');
+      var label = pill ? pill.textContent : '';
+      // Find project title from parent ba-card
+      var card = half.closest('.ba-card');
+      if (card) {
+        var titleEl = card.querySelector('.ba-title');
+        var cityEl  = card.querySelector('.ba-city');
+        if (titleEl) label += ' — ' + titleEl.textContent;
+        if (cityEl)  label += ', ' + cityEl.textContent;
+      }
+      openViewer(img.src, label);
+    });
   });
 
   document.addEventListener('keydown', function (e) {
